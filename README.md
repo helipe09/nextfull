@@ -6,7 +6,8 @@ Teste Nexti Frontend Jr. Esse é um teste de frontend Jr.
 
 Nesse Projeto foi utilizado:
 
-- [Spring Boot](https://www.typescriptlang.org/)
+- [Spring Boot](https://spring.io/projects/spring-boot)
+- [Maven](https://maven.apache.org/)
 
 
 ## Como rodar o projeto?
