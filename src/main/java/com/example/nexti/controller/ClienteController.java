@@ -16,6 +16,7 @@ public class ClienteController {
     private ClienteRepository clienteRepository;
 
     @ResponseBody
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping("/clientes")
 
     public List<Cliente> listar(){
@@ -25,6 +26,7 @@ public class ClienteController {
 
     @ResponseBody
     @Transactional
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping(path = "/novoCliente", method = RequestMethod.POST)
     public void salvar(@RequestBody Cliente cliente) {
         clienteRepository.save(cliente);
@@ -32,6 +34,7 @@ public class ClienteController {
 
     @ResponseBody
     @Transactional
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping(path = "/cliente/{id}", method = RequestMethod.DELETE)
     public void deletar(@PathVariable Integer id){
         clienteRepository.deleteById(id);

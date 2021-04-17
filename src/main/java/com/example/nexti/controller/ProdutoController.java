@@ -18,6 +18,7 @@ public class ProdutoController {
     private ProdutoRepository produtoRepository;
 
     @ResponseBody
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping("/produtos")
 
     public List<Produto> listar(){
@@ -27,6 +28,7 @@ public class ProdutoController {
 
     @ResponseBody
     @Transactional
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping(path = "/novoProduto", method = RequestMethod.POST)
     public void salvar(@RequestBody Produto produto) {
         produtoRepository.save(produto);
@@ -34,6 +36,7 @@ public class ProdutoController {
 
     @ResponseBody
     @Transactional
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping(path = "/produto/{id}", method = RequestMethod.DELETE)
     public void deletar(@PathVariable Integer id){
         produtoRepository.deleteById(id);
