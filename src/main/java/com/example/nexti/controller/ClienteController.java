@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ClienteController {
@@ -22,6 +23,15 @@ public class ClienteController {
     public List<Cliente> listar(){
     List<Cliente> cliente = clienteRepository.findAll();
     return cliente;
+    }
+
+
+    @ResponseBody
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @RequestMapping("/clientes/{id}")
+
+    public void listar(@RequestBody Integer id) {
+        Optional<Cliente> byId = clienteRepository.findById(id);
     }
 
     @ResponseBody
