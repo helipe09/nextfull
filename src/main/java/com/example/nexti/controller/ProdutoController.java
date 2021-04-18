@@ -2,16 +2,15 @@ package com.example.nexti.controller;
 
 import com.example.nexti.entity.Cliente;
 import com.example.nexti.entity.Produto;
-import com.example.nexti.repository.ClienteRepository;
 import com.example.nexti.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/produtos")
 public class ProdutoController {
 
     @Autowired
@@ -19,27 +18,32 @@ public class ProdutoController {
 
     @ResponseBody
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @RequestMapping("/produtos")
+    @GetMapping
 
     public List<Produto> listar(){
         List<Produto> produto = produtoRepository.findAll();
         return produto;
     }
 
-
-
-    @ResponseBody
     @Transactional
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @RequestMapping(path = "/novoProduto", method = RequestMethod.POST)
+    @GetMapping("/{id}")
+    public Produto findById(@PathVariable int id){
+        final Produto produto = produtoRepository.findById(id).orElse(null);
+        return produto;
+    }
+
+
+    @Transactional
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PostMapping
     public void salvar(@RequestBody Produto produto) {
         produtoRepository.save(produto);
     }
 
-    @ResponseBody
     @Transactional
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @RequestMapping(path = "/produto/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/{id}")
     public void deletar(@PathVariable Integer id){
         produtoRepository.deleteById(id);
     }
