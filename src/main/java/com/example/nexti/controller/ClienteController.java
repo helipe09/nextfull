@@ -39,6 +39,12 @@ public class ClienteController {
         clienteRepository.save(cliente);
     }
 
+    @Transactional
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+   @PutMapping
+    public void atualizar(@RequestBody Cliente cliente) {
+        clienteRepository.save(cliente);
+    }
 
 
     @Transactional

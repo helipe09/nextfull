@@ -42,6 +42,13 @@ public class PedidoController {
 
     @Transactional
     @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PutMapping
+    public void atualizar(@RequestBody Pedido pedido) {
+        pedidoRepository.save(pedido);
+    }
+
+    @Transactional
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Integer id){
         pedidoRepository.deleteById(id);

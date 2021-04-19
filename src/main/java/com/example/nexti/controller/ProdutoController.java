@@ -43,6 +43,13 @@ public class ProdutoController {
 
     @Transactional
     @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PutMapping
+    public void atualizar(@RequestBody Produto produto) {
+        produtoRepository.save(produto);
+    }
+
+    @Transactional
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Integer id){
         produtoRepository.deleteById(id);
